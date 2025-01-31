@@ -7,7 +7,6 @@ depends = []
 bash_profile = "~/.bash_profile"
 bashrc = "~/.bashrc"
 gitconfig = "~/.gitconfig"
-minttyrc = "~/.minttyrc"
 zshrc = "~/.zshrc"
 
 [default.variables]
