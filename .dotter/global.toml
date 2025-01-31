@@ -1,0 +1,16 @@
+[helpers]
+
+[default]
+depends = []
+
+[default.files]
+bash_profile = "~/.bash_profile"
+bashrc = "~/.bashrc"
+gitconfig = "~/.gitconfig"
+minttyrc = "~/.minttyrc"
+zshrc = "~/.zshrc"
+
+[default.variables]
+
+[settings]
+default_target_type = "automatic"

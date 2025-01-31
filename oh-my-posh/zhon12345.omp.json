@@ -1,0 +1,103 @@
+{
+	"$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+	"blocks": [
+		{
+			"type": "prompt",
+			"alignment": "left",
+			"newline": true,
+			"segments": [
+				{
+					"foreground": "lightGreen",
+					"leading_diamond": "<foreground,transparent>\u256d\u2500</>",
+					"template": " \ue795 {{ .Name }}",
+					"style": "diamond",
+					"type": "shell"
+				},
+				{
+					"foreground": "lightYellow",
+					"properties": {
+						"style": "mixed",
+						"folder_separator_icon": "/"
+					},
+					"template": " \ue613 {{ path .Path .Location }}",
+					"style": "diamond",
+					"type": "path"
+				},
+				{
+					"foreground": "lightBlue",
+					"properties": {
+						"fetch_status": true,
+						"fetch_upstream_icon": true
+					},
+					"template": " {{ .UpstreamIcon }} {{ url .HEAD .UpstreamURL }}{{ if or (or .Ahead .Behind) .Working.Changed .Staging.Changed }} [{{ if .Ahead }}<green> \u2191{{ .Ahead }}</>{{ end }}{{ if .Behind }}<red> \u2193{{ .Behind }}</>{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }} ]{{ end }}",
+					"style": "diamond",
+					"type": "git"
+				}
+			]
+		},
+		{
+			"type": "prompt",
+			"alignment": "right",
+			"overflow": "hide",
+			"segments": [
+				{
+					"foreground": "lightMagenta",
+					"properties": {
+						"always_enabled": true,
+						"style": "austin"
+					},
+					"template": "\ueba2 {{ .FormattedMs }}",
+					"style": "diamond",
+					"type": "executiontime"
+				},
+				{
+					"foreground_templates": [
+						"{{if eq \"Charging\" .State.String}}lightYellow{{end}}",
+						"{{if eq \"Discharging\" .State.String}}lightRed{{end}}",
+						"{{if eq \"Full\" .State.String}}lightGreen{{end}}"
+					],
+					"properties": {
+						"charged_icon": "\uf1e6",
+						"charging_icon": "\uf0e7",
+						"discharging_icon": "\uf12a"
+					},
+					"template": " {{ if not .Error }}{{ .Icon }} {{ .Percentage }}%{{ end }}{{ .Error }} ",
+					"style": "diamond",
+					"type": "battery"
+				},
+				{
+					"foreground": "lightCyan",
+					"properties": {
+						"time_format": "15:04:05"
+					},
+					"template": "{{ .CurrentDate | date .Format }}",
+					"style": "diamond",
+					"type": "time"
+				}
+			]
+		},
+		{
+			"type": "prompt",
+			"alignment": "left",
+			"newline": true,
+			"segments": [
+				{
+					"foreground": "green",
+					"style": "plain",
+					"template": "\u2570\u2500",
+					"type": "text"
+				},
+				{
+					"properties": {
+						"always_enabled": true
+					},
+					"style": "plain",
+					"template": "<lightGreen>\u276f</><lightYellow>\u276f</><lightBlue>\u276f</>",
+					"type": "status"
+				}
+			]
+		}
+	],
+	"final_space": true,
+	"version": 3
+}

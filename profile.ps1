@@ -1,0 +1,1 @@
+oh-my-posh init pwsh --config '~/.dotfiles/oh-my-posh/zhon12345.omp.json' | Invoke-Expression
