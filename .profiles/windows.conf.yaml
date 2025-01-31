@@ -1,0 +1,10 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ["~"]
+
+- link:
+    ~/.minttyrc: minttyrc
+    ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1: profile.ps1
+    ~/AppData/Local/clink/oh-my-posh.lua: oh-my-posh.lua

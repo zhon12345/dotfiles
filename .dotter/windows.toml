@@ -1,9 +1,0 @@
-includes = []
-packages = ["default"]
-
-[files]
-minttyrc = "~/.minttyrc"
-"profile.ps1" = "~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
-"oh-my-posh.lua" = "~/AppData/Local/clink/oh-my-posh.lua"
-
-[variables]
