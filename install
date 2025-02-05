@@ -2,18 +2,55 @@
 
 set -e
 
-DEFAULT_CONFIG_PREFIX="default"
+CONFIG_PREFIX="default"
 CONFIG_SUFFIX=".conf.yaml"
+
 CONFIG_DIR="profiles"
-DOTBOT_DIR="dotbot"
+BACKUP_DIR="backups"
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-DOTBOT_BIN="bin/dotbot"
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+main() {
+	backup_files "$@"
+	run_dotbot "$@"
+}
 
-cd "${BASEDIR}"
-git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${DOTBOT_DIR}"
+backup_files() {
+	if [ ! -d "${BASE_DIR}/${BACKUP_DIR}" ]; then
+		echo "Creating backup directory at ${BASE_DIR}/${BACKUP_DIR}"
+		mkdir -p "${BASE_DIR}/${BACKUP_DIR}"
+	else
+		echo "Backup directory already exists, skipping creation..."
+	fi
 
-for conf in ${DEFAULT_CONFIG_PREFIX} ${@}; do
-	"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG_DIR}/${conf}${CONFIG_SUFFIX}"
-done
+	for conf in $CONFIG_PREFIX $@; do
+		CONFIG_FILE="${CONFIG_DIR}/${conf}${CONFIG_SUFFIX}"
+		echo "Backing up files from ${CONFIG_FILE}..."
+
+		while IFS=: read -r DEST FILE; do
+			[[ "$DEST" =~ ^[[:space:]]*~/ ]] || continue
+
+			DEST=$(echo "${DEST//\~/$HOME}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+			FILE=$(echo "$FILE" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
+			if [ -e "$DEST" ] && [ ! -L "$DEST" ]; then
+				mv "${DEST}" "${BASE_DIR}/${BACKUP_DIR}/${FILE}"
+				echo "Backed up ${DEST} to ${BACKUP_DIR}/${FILE}"
+			fi
+		done < <(awk "/^- link:/{p=1;next} /^-/{p=0} p{print}" "${BASE_DIR}/${CONFIG_FILE}")
+	done
+}
+
+run_dotbot() {
+	DOTBOT_DIR="dotbot"
+	DOTBOT_BIN="bin/dotbot"
+
+	cd "${BASE_DIR}"
+	git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+	git submodule update --init --recursive "${DOTBOT_DIR}"
+
+	for conf in $CONFIG_PREFIX $@; do
+		"${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "${CONFIG_DIR}/${conf}${CONFIG_SUFFIX}"
+	done
+}
+
+main "$@"
