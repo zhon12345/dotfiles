@@ -29,7 +29,7 @@ backup_files() {
 		echo "Backing up files from ${CONFIG_FILE}..."
 
 		while IFS=: read -r DEST FILE; do
-			[[ "$DEST" =~ ^([[:space:]]*~/ | [[:space:]]*/.) ]] || continue
+			[[ "$DEST" =~ ^[[:space:]]*(~/|/.) ]] || continue
 
 			DEST=$(echo "${DEST//\~/$HOME}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 			FILE=$(echo "$FILE" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
