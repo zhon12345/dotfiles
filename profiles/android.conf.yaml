@@ -1,0 +1,7 @@
+- defaults:
+    link:
+      relink: true
+
+- link:
+    ~/.termux/colors.properties: termux/colors.properties
+    ~/.termux/termux.properties: termux/termux.properties
