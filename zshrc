@@ -31,8 +31,8 @@ HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 HISTFILE=~/.zsh_history
 HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
+
+setopt inc_append_history
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
@@ -46,3 +46,14 @@ autoload -Uz compinit && compinit
 
 # Aliases
 alias ls='ls --color'
+
+# Functions
+cleanup_history() {
+	local history_files="$HOME/.zsh_history."*
+
+	if ls "$history_files" >/dev/null 2>&1; then
+		rm -f "$history_files"
+	fi
+}
+
+cleanup_history
