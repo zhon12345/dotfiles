@@ -1,0 +1,7 @@
+- defaults:
+    link:
+      relink: true
+
+- link:
+    ~/.local/share/konsole/OneDarkProDarker.colorscheme: konsole/OneDarkProDarker.colorscheme
+    ~/.local/share/konsole/zhon12345.profile: konsole/zhon12345.profile

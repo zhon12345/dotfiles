@@ -1,6 +1,0 @@
-- defaults:
-    link:
-      relink: true
-
-- link:
-    ~/.local/share/konsole: konsole
