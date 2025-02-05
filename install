@@ -15,9 +15,11 @@ main() {
 }
 
 backup_files() {
-	if [ ! -d "${BASE_DIR}/${BACKUP_DIR}" ]; then
-		echo "Creating backup directory at ${BASE_DIR}/${BACKUP_DIR}"
-		mkdir -p "${BASE_DIR}/${BACKUP_DIR}"
+	BACKUP_PATH="${BASE_DIR}/${BACKUP_DIR}"
+
+	if [ ! -d "$BACKUP_PATH" ]; then
+		echo "Creating backup directory at ${BACKUP_PATH}"
+		mkdir -p "$BACKUP_PATH"
 	else
 		echo "Backup directory already exists, skipping creation..."
 	fi
@@ -33,8 +35,14 @@ backup_files() {
 			FILE=$(echo "$FILE" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
 			if [ -e "$DEST" ] && [ ! -L "$DEST" ]; then
-				mv "${DEST}" "${BASE_DIR}/${BACKUP_DIR}/${FILE}"
-				echo "Backed up ${DEST} to ${BACKUP_DIR}/${FILE}"
+				DIR_PATH=$(dirname "$FILE")
+
+				if [ ! -d "${BACKUP_PATH}/${DIR_PATH}" ]; then
+					mkdir -p "${BACKUP_PATH}/${DIR_PATH}"
+				fi
+
+				mv "${DEST}" "${BACKUP_PATH}/${FILE}"
+				echo "Backed up ${DEST} to ${BACKUP_PATH}/${FILE}"
 			fi
 		done < <(awk "/^- link:/{p=1;next} /^-/{p=0} p{print}" "${BASE_DIR}/${CONFIG_FILE}")
 	done
