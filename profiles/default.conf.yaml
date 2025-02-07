@@ -9,6 +9,9 @@
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
     ~/.zshrc: zshrc
+    ~/.config/fastfetch/config.jsonc:
+      create: true
+      path: fastfetch.jsonc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

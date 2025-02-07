@@ -1,0 +1,131 @@
+{
+	"$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+	"logo": {
+		"padding": {
+			"top": 1,
+			"left": 1
+		}
+	},
+	"display": {
+		"separator": " \uf061 ",
+		"key": {
+			"paddingLeft": 2
+		},
+		"constants": ["──────────"]
+	},
+	"modules": [
+		{
+			"type": "custom",
+			"outputColor": "green",
+			"format": "┌{$1}──────── Software Information ────────{$1}┐"
+		},
+		{
+			"type": "os",
+			"key": "\udb82\udcc7",
+			"keyColor": "magenta"
+		},
+		{
+			"type": "kernel",
+			"key": "\uf17c",
+			"keyColor": "magenta"
+		},
+		{
+			"type": "packages",
+			"key": "\ueb29",
+			"keyColor": "magenta"
+		},
+		{
+			"type": "terminal",
+			"key": "\ue795",
+			"keyColor": "magenta"
+		},
+		{
+			"type": "shell",
+			"key": "\uf489",
+			"keyColor": "magenta"
+		},
+		"break",
+		{
+			"type": "de",
+			"key": "\uf488",
+			"keyColor": "yellow"
+		},
+		{
+			"type": "wm",
+			"key": "\ueb23",
+			"keyColor": "yellow"
+		},
+		{
+			"type": "theme",
+			"key": "\udb80\ude7c",
+			"keyColor": "yellow"
+		},
+		{
+			"type": "icons",
+			"key": "\udb80\ude4b",
+			"keyColor": "yellow"
+		},
+		{
+			"type": "font",
+			"key": "\uf031",
+			"keyColor": "yellow"
+		},
+		{
+			"type": "custom",
+			"outputColor": "green",
+			"format": "└{$1}{$1}────{$1}────{$1}{$1}┘"
+		},
+		"break",
+		{
+			"type": "custom",
+			"outputColor": "green",
+			"format": "┌{$1}──────── Hardware Information ────────{$1}┐"
+		},
+		{
+			"type": "display",
+			"key": "\uf4a9",
+			"keyColor": "cyan",
+			"format": "{type} {inch}\" {width}x{height} @ {refresh-rate}Hz {?is-primary}(Primary){?}"
+		},
+		{
+			"type": "cpu",
+			"key": "\uec19",
+			"keyColor": "cyan"
+		},
+		{
+			"type": "gpu",
+			"key": "\uec19",
+			"keyColor": "cyan"
+		},
+		{
+			"type": "memory",
+			"key": "\ue266",
+			"keyColor": "cyan"
+		},
+		{
+			"type": "swap",
+			"key": "\udb82\udfce",
+			"keyColor": "cyan"
+		},
+		{
+			"type": "disk",
+			"key": "\udb80\udeca",
+			"keyColor": "cyan"
+		},
+		{
+			"type": "battery",
+			"useSetupApi": true,
+			"key": "\udb80\udc79",
+			"keyColor": "cyan",
+			"format": "{technology} {capacity} ({status})"
+		},
+		{
+			"type": "custom",
+			"outputColor": "green",
+			"format": "└{$1}{$1}────{$1}────{$1}{$1}┘"
+		},
+		"break",
+		"colors",
+		"break"
+	]
+}
