@@ -7,7 +7,7 @@ UseFontLineChararacters=true
 CursorShape=1
 
 [General]
-Command=/bin/bash -l
+Command=/usr/bin/zsh -l
 Name=zhon12345
 Parent=FALLBACK/
 
