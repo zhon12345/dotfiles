@@ -56,6 +56,11 @@
 			"keyColor": "yellow"
 		},
 		{
+			"type": "wmtheme",
+			"key": "\udb80\ude7c",
+			"keyColor": "yellow"
+		},
+		{
 			"type": "theme",
 			"key": "\udb80\ude7c",
 			"keyColor": "yellow"
@@ -89,12 +94,12 @@
 		},
 		{
 			"type": "cpu",
-			"key": "\uec19",
+			"key": "\udb80\udf5b",
 			"keyColor": "cyan"
 		},
 		{
 			"type": "gpu",
-			"key": "\uec19",
+			"key": "\udb80\udf5b",
 			"keyColor": "cyan"
 		},
 		{
@@ -116,8 +121,7 @@
 			"type": "battery",
 			"useSetupApi": true,
 			"key": "\udb80\udc79",
-			"keyColor": "cyan",
-			"format": "{technology} {capacity} ({status})"
+			"keyColor": "cyan"
 		},
 		{
 			"type": "custom",
