@@ -50,12 +50,15 @@ zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 autoload -Uz compinit && compinit
 
 # Functions
-cleanup_history() {
-	local history_files="${HOME}/.zsh_history."*
+cleanup_cache() {
+	local patterns=(
+		".zsh_history.*"
+		".zcompdump*"
+	)
 
-	if ls "$history_files" >/dev/null 2>&1; then
-		rm -f "$history_files"
-	fi
+	for pattern in "${patterns[@]}"; do
+		find "${HOME}" -maxdepth 1 -type f -name "${pattern}" -exec rm -f {} \;
+	done
 }
 
-cleanup_history
+cleanup_cache
