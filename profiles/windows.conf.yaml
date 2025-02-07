@@ -4,6 +4,7 @@
 
 - link:
     ~/.minttyrc: minttyrc
+    ~/.bash_profile: bash_profile
     ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1: profile.ps1
     ~/AppData/Local/clink/oh-my-posh.lua: oh-my-posh.lua
     /msys64/etc/nsswitch.conf: nsswitch.conf

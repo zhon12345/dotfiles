@@ -1,6 +1,11 @@
+# Global Aliases & Commands
+if [[ -f "${HOME}/.profile" ]]; then
+	source ~/.profile
+fi
+
 # Plugin Manager
 if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
-	ZINIT_HOME="$HOME/.zinit/bin"
+	ZINIT_HOME="${HOME}/.zinit/bin"
 else
 	ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 fi
@@ -44,12 +49,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 autoload -Uz compinit && compinit
 
-# Aliases
-alias ls='ls --color'
-
 # Functions
 cleanup_history() {
-	local history_files="$HOME/.zsh_history."*
+	local history_files="${HOME}/.zsh_history."*
 
 	if ls "$history_files" >/dev/null 2>&1; then
 		rm -f "$history_files"

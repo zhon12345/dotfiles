@@ -5,7 +5,7 @@
 - clean: ["~"]
 
 - link:
-    ~/.bash_profile: bash_profile
+    ~/.profile: profile
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
     ~/.zshrc: zshrc

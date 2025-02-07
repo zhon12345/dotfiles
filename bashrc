@@ -1,3 +1,8 @@
+# Global Aliases & Commands
+if [[ -f "${HOME}/.profile" ]]; then
+	source ~/.profile
+fi
+
 # Keybinds
 bind '"\C-h": backward-kill-word'
 bind '"\e[3;5~":kill-word'
@@ -15,5 +20,3 @@ PROMPT_COMMAND="history -a; history -n"
 
 # Theming
 eval "$(oh-my-posh init bash --config ~/.dotfiles/oh-my-posh/zhon12345.omp.json)"
-
-fastfetch
