@@ -18,8 +18,13 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
+zinit wait lucid light-mode for \
+	atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
+		zdharma-continuum/fast-syntax-highlighting \
+	atload"_zsh_autosuggest_start" \
+		zsh-users/zsh-autosuggestions \
+	atpull"zinit creinstall -q ." blockf \
+		zsh-users/zsh-completions
 
 # Theming
 eval "$(oh-my-posh init zsh --config ~/.dotfiles/oh-my-posh/zhon12345.omp.json)"
@@ -47,7 +52,6 @@ setopt hist_find_no_dups
 # Completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
-autoload -Uz compinit && compinit
 
 # Functions
 cleanup_cache() {
