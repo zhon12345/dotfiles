@@ -3,7 +3,8 @@
 	"logo": {
 		"padding": {
 			"top": 1,
-			"left": 1
+			"left": 1,
+			"right": 2
 		}
 	},
 	"display": {
@@ -21,30 +22,24 @@
 		},
 		{
 			"type": "os",
-			"key": "\udb82\udcc7",
-			"keyColor": "magenta"
+			"key": "\udb80\uddc5",
+			"keyColor": "yellow"
 		},
 		{
 			"type": "kernel",
 			"key": "\uf17c",
-			"keyColor": "magenta"
+			"keyColor": "yellow"
+		},
+		{
+			"type": "uptime",
+			"key": "\udb80\udd50",
+			"keyColor": "yellow"
 		},
 		{
 			"type": "packages",
 			"key": "\ueb29",
-			"keyColor": "magenta"
+			"keyColor": "yellow"
 		},
-		{
-			"type": "terminal",
-			"key": "\ue795",
-			"keyColor": "magenta"
-		},
-		{
-			"type": "shell",
-			"key": "\uf489",
-			"keyColor": "magenta"
-		},
-		"break",
 		{
 			"type": "de",
 			"key": "\uf488",
@@ -56,23 +51,13 @@
 			"keyColor": "yellow"
 		},
 		{
-			"type": "wmtheme",
-			"key": "\udb80\ude7c",
+			"type": "terminal",
+			"key": "\ue795",
 			"keyColor": "yellow"
 		},
 		{
-			"type": "theme",
-			"key": "\udb80\ude7c",
-			"keyColor": "yellow"
-		},
-		{
-			"type": "icons",
-			"key": "\udb80\ude4b",
-			"keyColor": "yellow"
-		},
-		{
-			"type": "font",
-			"key": "\uf031",
+			"type": "shell",
+			"key": "\uf489",
 			"keyColor": "yellow"
 		},
 		{
@@ -88,6 +73,7 @@
 		},
 		{
 			"type": "display",
+			"order": "asc",
 			"key": "\uf4a9",
 			"keyColor": "cyan",
 			"format": "{type} {inch}\" {width}x{height} @ {refresh-rate}Hz {?is-primary}(Primary){?}"
@@ -105,11 +91,6 @@
 		{
 			"type": "memory",
 			"key": "\ue266",
-			"keyColor": "cyan"
-		},
-		{
-			"type": "swap",
-			"key": "\udb82\udfce",
 			"keyColor": "cyan"
 		},
 		{
