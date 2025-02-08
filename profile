@@ -23,9 +23,3 @@ detect_os() {
 }
 
 detect_os
-
-if [[ "$MACHINE" == "Android" ]]; then
-	fastfetch -l small
-else
-	fastfetch
-fi
