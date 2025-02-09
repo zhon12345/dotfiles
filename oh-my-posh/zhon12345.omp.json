@@ -61,7 +61,7 @@
 						"charging_icon": "\uf0e7",
 						"discharging_icon": "\uf12a"
 					},
-					"template": " {{ if not .Error }}{{ .Icon }} {{ .Percentage }}%{{ end }}{{ .Error }} ",
+					"template": " {{ if not .Error }}{{ .Icon }} {{ .Percentage }}%{{ end }}",
 					"style": "diamond",
 					"type": "battery"
 				},
@@ -70,7 +70,7 @@
 					"properties": {
 						"time_format": "15:04:05"
 					},
-					"template": "{{ .CurrentDate | date .Format }}",
+					"template": " {{ .CurrentDate | date .Format }}",
 					"style": "diamond",
 					"type": "time"
 				}
