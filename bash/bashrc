@@ -1,6 +1,6 @@
 # Global Aliases & Commands
 if [[ -f "${HOME}/.profile" ]]; then
-	source ~/.profile
+	. ~/.profile
 fi
 
 # Keybinds

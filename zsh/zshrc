@@ -1,21 +1,21 @@
 # Global Aliases & Commands
 if [[ -f "${HOME}/.profile" ]]; then
-	source ~/.profile
+	. ~/.profile
 fi
 
 # Plugin Manager
-if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
+if [[ "$MACHINE" = "Windows" ]]; then
 	ZINIT_HOME="${HOME}/.zinit/bin"
 else
 	ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/bin"
 fi
 
-if [[ ! -d "$ZINIT_HOME" ]]; then
-  mkdir -p "$(dirname $ZINIT_HOME)"
-  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+if [[ ! -d "${ZINIT_HOME}" ]]; then
+  mkdir -p "$(dirname ${ZINIT_HOME})"
+  git clone https://github.com/zdharma-continuum/zinit.git "${ZINIT_HOME}"
 fi
 
-source "${ZINIT_HOME}/zinit.zsh"
+. "${ZINIT_HOME}/zinit.zsh"
 
 # Plugins
 zinit wait lucid light-mode for \

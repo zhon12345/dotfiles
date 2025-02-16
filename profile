@@ -2,8 +2,8 @@
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 
-[[ ! -d "$XDG_CONFIG_HOME" ]] && mkdir -p "$XDG_CONFIG_HOME"
-[[ ! -d "$XDG_CACHE_HOME" ]] && mkdir -p "$XDG_CACHE_HOME"
+[ ! -d "${XDG_CONFIG_HOME}" ] && mkdir -p "${XDG_CONFIG_HOME}"
+[ ! -d "${XDG_CACHE_HOME}" ] && mkdir -p "${XDG_CACHE_HOME}"
 
 # Environment Variables
 export EDITOR='code'
@@ -15,7 +15,7 @@ alias grep='grep --color'
 
 # Functions
 detect_os() {
-	local uname_string="$(uname -a)"
+	uname_string="$(uname -a)"
 
 	case "$uname_string" in
 			*Darwin*)			MACHINE="macOS";;

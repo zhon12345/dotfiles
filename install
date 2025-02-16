@@ -21,14 +21,14 @@ remove_whitespace() {
 backup_files() {
 	BACKUP_PATH="${BASE_DIR}/${BACKUP_DIR}"
 
-	if [ ! -d "$BACKUP_PATH" ]; then
+	if [[ ! -d "${BACKUP_PATH}" ]]; then
 		echo "Creating backup directory at ${BACKUP_PATH}"
-		mkdir -p "$BACKUP_PATH"
+		mkdir -p "${BACKUP_PATH}"
 	else
 		echo "Backup directory already exists, skipping creation..."
 	fi
 
-	for conf in $CONFIG_PREFIX $@; do
+	for conf in "${CONFIG_PREFIX}" "$@"; do
 		CONFIG_FILE="${CONFIG_DIR}/${conf}${CONFIG_SUFFIX}"
 		echo "Backing up files from ${CONFIG_FILE}..."
 
@@ -38,21 +38,21 @@ backup_files() {
 			DEST=$(remove_whitespace "${DEST//\~/$HOME}")
 			FILE=$(remove_whitespace "$FILE")
 
-			if [ -z "$FILE" ]; then
+			if [[ -z "$FILE" ]]; then
 				while IFS=: read -r NEXT_DEST NEXT_FILE; do
 					NEXT_DEST=$(remove_whitespace "$NEXT_DEST")
 					NEXT_FILE=$(remove_whitespace "$NEXT_FILE")
-					if [ "$NEXT_DEST" == "path" ]; then
+					if [[ "$NEXT_DEST" = "path" ]]; then
 						FILE="$NEXT_FILE"
 						break
 					fi
 				done
 			fi
 
-			if [ -e "$DEST" ] && [ ! -L "$DEST" ]; then
+			if [[ -e "$DEST" ]] && [[ ! -L "$DEST" ]]; then
 				DIR_PATH=$(dirname "$FILE")
 
-				if [ ! -d "${BACKUP_PATH}/${DIR_PATH}" ]; then
+				if [[ ! -d "${BACKUP_PATH}/${DIR_PATH}" ]]; then
 					mkdir -p "${BACKUP_PATH}/${DIR_PATH}"
 				fi
 
@@ -71,7 +71,7 @@ run_dotbot() {
 	git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 	git submodule update --init --recursive "${DOTBOT_DIR}"
 
-	for conf in $CONFIG_PREFIX $@; do
+	for conf in "${CONFIG_PREFIX}" "$@"; do
 		"${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "${CONFIG_DIR}/${conf}${CONFIG_SUFFIX}"
 	done
 }
