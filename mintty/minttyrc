@@ -20,10 +20,14 @@ BoldMagenta=222,115,255
 BoldCyan=76,209,224
 BoldWhite=230,230,230
 
-Font=Cascadia Code NF
+Font=CaskaydiaCove NFM
 FontHeight=12
+Locale=en_US
+Charset=UTF-8
 
 RightClickAction=paste
 MiddleClickAction=void
 
 Columns=96
+
+Term=xterm-256color
