@@ -18,7 +18,7 @@
 
 - link:
     ~/.profile: profile
-    ~/.zshenv: zshenv
+    ~/.zshenv: zsh/zshenv
     ~/.config/bash/bashrc: bash/bashrc
     ~/.config/git/config: git/config
     ~/.config/zsh/.zshrc: zsh/zshrc
