@@ -2,6 +2,9 @@
     link:
       relink: true
 
+- create:
+    - ~/.config/konsole
+
 - link:
-    ~/.local/share/konsole/OneDarkProDarker.colorscheme: konsole/OneDarkProDarker.colorscheme
-    ~/.local/share/konsole/zhon12345.profile: konsole/zhon12345.profile
+    ~/.config/konsole/OneDarkProDarker.colorscheme: konsole/OneDarkProDarker.colorscheme
+    ~/.config/konsole/zhon12345.profile: konsole/zhon12345.profile

@@ -2,9 +2,17 @@
     link:
       relink: true
 
+- clean:
+    - "~/Documents/WindowsPowerShell"
+    - "~/AppData/Local/clink"
+    - "/msys64/etc/nsswitch.conf"
+
+- create:
+    - ~/Documents/WindowsPowerShell
+
 - link:
-    ~/.minttyrc: minttyrc
-    ~/.bash_profile: bash_profile
-    ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1: profile.ps1
-    ~/AppData/Local/clink/oh-my-posh.lua: oh-my-posh.lua
-    /msys64/etc/nsswitch.conf: nsswitch.conf
+    ~/.minttyrc: mintty/minttyrc
+    ~/.bash_profile: bash/bash_profile
+    ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1: powershell/profile.ps1
+    ~/AppData/Local/clink/oh-my-posh.lua: clink/oh-my-posh.lua
+    /msys64/etc/nsswitch.conf: msys64/nsswitch.conf

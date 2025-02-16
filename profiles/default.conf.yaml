@@ -4,14 +4,25 @@
 
 - clean: ["~"]
 
+- clean:
+    ~/.config:
+      force: true
+      recursive: true
+
+- create:
+    - ~/.config
+    - ~/.config/bash
+    - ~/.config/git
+    - ~/.config/zsh
+    - ~/.config/fastfetch
+
 - link:
     ~/.profile: profile
-    ~/.bashrc: bashrc
-    ~/.gitconfig: gitconfig
-    ~/.zshrc: zshrc
-    ~/.config/fastfetch/config.jsonc:
-      create: true
-      path: fastfetch.jsonc
+    ~/.zshenv: zshenv
+    ~/.config/bash/bashrc: bash/bashrc
+    ~/.config/git/config: git/config
+    ~/.config/zsh/.zshrc: zsh/zshrc
+    ~/.config/fastfetch/config.jsonc: fastfetch/config.jsonc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

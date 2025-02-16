@@ -10,7 +10,7 @@ bind '"\e[3;5~":kill-word'
 # History
 HISTSIZE=5000
 HISTFILESIZE=$HISTSIZE
-HISTFILE=~/.bash_history
+HISTFILE="${XDG_CONFIG_HOME}/bash/bash_history"
 HISTCONTROL=ignoreboth:erasedups
 
 shopt -s histappend

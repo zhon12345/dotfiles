@@ -7,7 +7,7 @@ fi
 if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
 	ZINIT_HOME="${HOME}/.zinit/bin"
 else
-	ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+	ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/bin"
 fi
 
 if [[ ! -d "$ZINIT_HOME" ]]; then
@@ -39,7 +39,7 @@ bindkey '^[[3;5~' kill-word
 # History
 HISTSIZE=5000
 SAVEHIST=$HISTSIZE
-HISTFILE=~/.zsh_history
+HISTFILE="${XDG_CONFIG_HOME}/zsh/zsh_history"
 HISTDUP=erase
 
 setopt inc_append_history
@@ -57,7 +57,7 @@ zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 cleanup_cache() {
 	local patterns=(
 		".zsh_history.*"
-		".zcompdump*"
+		".zcompdump.*"
 	)
 
 	for pattern in "${patterns[@]}"; do
