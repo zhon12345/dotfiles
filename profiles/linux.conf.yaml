@@ -1,10 +1,26 @@
 - defaults:
     link:
+      create: true
       relink: true
 
-- create:
-    - ~/.config/konsole
+- clean: ["~", "~/.config"]
 
 - link:
-    ~/.config/konsole/OneDarkProDarker.colorscheme: konsole/OneDarkProDarker.colorscheme
-    ~/.config/konsole/zhon12345.profile: konsole/zhon12345.profile
+    ~/.profile: profile
+    ~/.zshenv: zsh/zshenv
+    ~/.bashrc: bash/bashrc
+    ~/.config/git/config: git/config
+    ~/.config/zsh/.zshrc: zsh/zshrc
+    ~/.config/fastfetch/config.jsonc: fastfetch/config.jsonc
+    ~/.config/oh-my-posh/zhon12345.omp.json: oh-my-posh/zhon12345.omp.json
+
+    ~/.config/konsole/zhon12345.profile:
+      if: command -v konsole
+      path: konsole/zhon12345.profile
+
+    ~/.config/konsole/OneDarkProDarker.colorscheme:
+      if: command -v konsole
+      path: konsole/OneDarkProDarker.colorscheme
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]

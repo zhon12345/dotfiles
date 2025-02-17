@@ -2,7 +2,6 @@
 
 set -e
 
-CONFIG_PREFIX="default"
 CONFIG_SUFFIX=".conf.yaml"
 
 CONFIG_DIR="profiles"
@@ -10,6 +9,12 @@ BACKUP_DIR="backups"
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 main() {
+	if [[ $# -eq 0 ]]; then
+		echo "Error: No config specified"
+		echo "Usage: $0 <config> [config2 ...]"
+		exit 1
+	fi
+
 	backup_files "$@"
 	run_dotbot "$@"
 }
@@ -28,7 +33,7 @@ backup_files() {
 		echo "Backup directory already exists, skipping creation..."
 	fi
 
-	for conf in "${CONFIG_PREFIX}" "$@"; do
+	for conf in "$@"; do
 		CONFIG_FILE="${CONFIG_DIR}/${conf}${CONFIG_SUFFIX}"
 		echo "Backing up files from ${CONFIG_FILE}..."
 
@@ -71,7 +76,7 @@ run_dotbot() {
 	git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 	git submodule update --init --recursive "${DOTBOT_DIR}"
 
-	for conf in "${CONFIG_PREFIX}" "$@"; do
+	for conf in "$@"; do
 		"${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "${CONFIG_DIR}/${conf}${CONFIG_SUFFIX}"
 	done
 }
