@@ -1,8 +1,0 @@
-[core]
-	editor = code --wait
-	autocrlf = input
-[user]
-	name = zhon12345
-	email = 43035773+zhon12345@users.noreply.github.com
-[init]
-	defaultBranch = main

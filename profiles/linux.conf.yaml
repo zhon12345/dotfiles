@@ -9,7 +9,6 @@
     ~/.profile: profile
     ~/.zshenv: zsh/zshenv
     ~/.bashrc: bash/bashrc
-    ~/.config/git/config: git/config
     ~/.config/zsh/.zshrc: zsh/zshrc
     ~/.config/fastfetch/config.jsonc: fastfetch/config.jsonc
     ~/.config/oh-my-posh/zhon12345.omp.json: oh-my-posh/zhon12345.omp.json
@@ -24,3 +23,4 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [./git/generate-config.sh, Generating git config]

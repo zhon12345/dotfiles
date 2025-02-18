@@ -10,7 +10,6 @@
     ~/.bash_profile: bash/bash_profile
     ~/.bashrc: bash/bashrc
     ~/.minttyrc: mintty/minttyrc
-    ~/.config/git/config: git/config
     ~/.config/fastfetch/config.jsonc: fastfetch/config.jsonc
     ~/.config/oh-my-posh/zhon12345.omp.json: oh-my-posh/zhon12345.omp.json
     ~/AppData/Local/clink/oh-my-posh.lua: clink/oh-my-posh.lua
@@ -22,3 +21,4 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [./git/generate-config.sh, Generating git config]
