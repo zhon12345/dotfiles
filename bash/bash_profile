@@ -1,5 +1,5 @@
 if command -v zsh &> /dev/null; then
   exec zsh
 else
-	[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/bash/bashrc" ]] && . "${XDG_CONFIG_HOME:-$HOME/.config}/bash/bashrc"
+	[[ -f ~/.bashrc ]] && . ~/.bashrc
 fi

@@ -1,1 +1,1 @@
-load(io.popen('oh-my-posh init cmd --config ~/.dotfiles/oh-my-posh/zhon12345.omp.json'):read("*a"))()
+load(io.popen('oh-my-posh init cmd --config ~/.config/oh-my-posh/zhon12345.omp.json'):read("*a"))()

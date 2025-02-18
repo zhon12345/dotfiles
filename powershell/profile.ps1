@@ -1,1 +1,1 @@
-oh-my-posh init pwsh --config '~/.dotfiles/oh-my-posh/zhon12345.omp.json' | Invoke-Expression
+oh-my-posh init pwsh --config '~/.config/oh-my-posh/zhon12345.omp.json' | Invoke-Expression

@@ -1,18 +1,24 @@
 - defaults:
     link:
+      create: true
       relink: true
 
-- clean:
-    - "~/Documents/WindowsPowerShell"
-    - "~/AppData/Local/clink"
-    - "/msys64/etc/nsswitch.conf"
-
-- create:
-    - ~/Documents/WindowsPowerShell
+- clean: ["~", "~/.config", "~/AppData/Local/clink", "~/Documents/WindowsPowerShell"]
 
 - link:
-    ~/.minttyrc: mintty/minttyrc
+    ~/.profile: profile
     ~/.bash_profile: bash/bash_profile
-    ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1: powershell/profile.ps1
+    ~/.bashrc: bash/bashrc
+    ~/.minttyrc: mintty/minttyrc
+    ~/.config/git/config: git/config
+    ~/.config/fastfetch/config.jsonc: fastfetch/config.jsonc
+    ~/.config/oh-my-posh/zhon12345.omp.json: oh-my-posh/zhon12345.omp.json
     ~/AppData/Local/clink/oh-my-posh.lua: clink/oh-my-posh.lua
-    /msys64/etc/nsswitch.conf: msys64/nsswitch.conf
+    ~/Documents/WindowsPowerShell/profile.ps1: powershell/profile.ps1
+
+    /msys64/etc/nsswitch.conf:
+      if: "test -d /msys64/"
+      path: msys64/nsswitch.conf
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
