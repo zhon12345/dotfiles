@@ -21,4 +21,4 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [./git/generate-config.sh, Generating git config]
+    - [bash ./git/generate-config.sh, Generating git config]
