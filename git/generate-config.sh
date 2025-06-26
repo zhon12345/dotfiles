@@ -11,6 +11,9 @@ declare -A git_config=(
 	["user.email"]="43035773+zhon12345@users.noreply.github.com"
 	["core.autocrlf"]="input"
 	["init.defaultBranch"]="main"
+	["status.showStash"]="true"
+	["url."https://github.com/".insteadOf"]="gh:"
+	["url."https://github.com/zhon12345/".insteadOf"]="zhon:"
 )
 
 export GIT_CONFIG_GLOBAL="${XDG_CONFIG_HOME}/git/config"
