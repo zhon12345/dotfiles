@@ -1,6 +1,6 @@
 # Global Aliases & Commands
 if [[ -f "${HOME}/.profile" ]]; then
-	. ~/.profile
+	source ~/.profile
 fi
 
 # Plugin Manager
@@ -15,19 +15,16 @@ if [[ ! -d "${ZINIT_HOME}" ]]; then
   git clone https://github.com/zdharma-continuum/zinit.git "${ZINIT_HOME}"
 fi
 
-. "${ZINIT_HOME}/zinit.zsh"
+source "${ZINIT_HOME}/zinit.zsh"
 
 # Plugins
 zinit wait lucid light-mode for \
-	atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
+	atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
 		zdharma-continuum/fast-syntax-highlighting \
-	atload"_zsh_autosuggest_start" \
-		zsh-users/zsh-autosuggestions \
-	atpull"zinit creinstall -q ." blockf \
-		zsh-users/zsh-completions
-
-# Theming
-eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zhon12345.omp.json)"
+	blockf \
+		zsh-users/zsh-completions \
+	atload"!_zsh_autosuggest_start" \
+		zsh-users/zsh-autosuggestions
 
 # Keybinds
 bindkey -e
@@ -66,3 +63,6 @@ cleanup_cache() {
 }
 
 cleanup_cache
+
+# Theming
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zhon12345.omp.json)"
