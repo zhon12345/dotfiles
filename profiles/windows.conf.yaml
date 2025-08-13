@@ -10,6 +10,7 @@
     ~/.bash_profile: bash/bash_profile
     ~/.bashrc: bash/bashrc
     ~/.minttyrc: mintty/minttyrc
+    ~/.wslconfig: wsl/wslconfig
     ~/.config/fastfetch/config.jsonc: fastfetch/config.jsonc
     ~/.config/oh-my-posh/zhon12345.omp.json: oh-my-posh/zhon12345.omp.json
     ~/AppData/Local/clink/oh-my-posh.lua: clink/oh-my-posh.lua
