@@ -12,6 +12,7 @@
     ~/.minttyrc: mintty/minttyrc
     ~/.wslconfig: wsl/wslconfig
     ~/.config/fastfetch/config.jsonc: fastfetch/config.jsonc
+    ~/.ssh/allowedSignersFile: ssh/allowedSignersFile
     ~/.config/oh-my-posh/zhon12345.omp.json: oh-my-posh/zhon12345.omp.json
     ~/AppData/Local/clink/oh-my-posh.lua: clink/oh-my-posh.lua
     ~/Documents/WindowsPowerShell/profile.ps1: powershell/profile.ps1
