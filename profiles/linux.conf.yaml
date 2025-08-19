@@ -23,5 +23,4 @@
       path: konsole/OneDarkProDarker.colorscheme
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
     - [./git/generate-config.sh, Generating git config]

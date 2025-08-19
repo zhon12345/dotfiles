@@ -30,5 +30,4 @@
       path: msys64/nsswitch.conf
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
     - [bash ./git/generate-config.sh, Generating git config]

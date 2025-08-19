@@ -74,7 +74,7 @@ run_dotbot() {
 
 	cd "${BASE_DIR}"
 	git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-	git submodule update --init --recursive "${DOTBOT_DIR}"
+	git submodule update --init --remote "${DOTBOT_DIR}"
 
 	for conf in "$@"; do
 		"${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "${CONFIG_DIR}/${conf}${CONFIG_SUFFIX}"
