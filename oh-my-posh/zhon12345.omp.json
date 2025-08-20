@@ -29,7 +29,7 @@
 						"fetch_status": true,
 						"fetch_upstream_icon": true
 					},
-					"template": " {{ .UpstreamIcon }} {{ url .HEAD .UpstreamURL }}{{ if or (or .Ahead .Behind) .Working.Changed .Staging.Changed }} [{{ if .Ahead }}<green> \u2191{{ .Ahead }}</>{{ end }}{{ if .Behind }}<red> \u2193{{ .Behind }}</>{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }} ]{{ end }}",
+					"template": " {{ .UpstreamIcon }} {{ url .HEAD .UpstreamURL }}{{ if or (or .Ahead .Behind) .Working.Changed .Staging.Changed }} [{{ if .Ahead }}<green> \u2191{{ .Ahead }}</>{{ end }}{{ if .Behind }}<red> \u2193{{ .Behind }}</>{{ end }}{{ if .Working.Changed }} \uea73 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf00c {{ .Staging.String }}{{ end }} ]{{ end }}",
 					"style": "diamond",
 					"type": "git"
 				}
@@ -59,7 +59,8 @@
 					"properties": {
 						"charged_icon": "\uf1e6",
 						"charging_icon": "\uf0e7",
-						"discharging_icon": "\uf12a"
+						"discharging_icon": "\uf12a",
+						"not_charging_icon": "\udb80\udc79"
 					},
 					"template": " {{ if not .Error }}{{ .Icon }} {{ .Percentage }}%{{ end }}",
 					"style": "diamond",
