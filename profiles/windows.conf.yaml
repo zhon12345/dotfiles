@@ -10,8 +10,6 @@
     ~/.bash_profile: bash/bash_profile
     ~/.bashrc: bash/bashrc
     ~/.minttyrc: mintty/minttyrc
-    ~/.wslconfig: wsl/wslconfig
-    ~/.config/fastfetch/config.jsonc: fastfetch/config.jsonc
     ~/.ssh/allowedSignersFile: ssh/allowedSignersFile
     ~/.config/oh-my-posh/zhon12345.omp.json: oh-my-posh/zhon12345.omp.json
     ~/AppData/Local/clink/oh-my-posh.lua: clink/oh-my-posh.lua
@@ -21,9 +19,17 @@
       if: command -v zsh
       path: zsh/zshenv
 
-    ~/.config/zsh/zshrc:
+    ~/.wslconfig:
+      if: comamnd -v wsl
+      path: wsl/wslconfig
+
+    ~/.config/zsh/.zshrc:
       if: command -v zsh
       path: zsh/zshrc
+
+    ~/.config/fastfetch/config.jsonc:
+      if: command -v fastfetch
+      path: fastfetch/config.jsonc
 
     /msys64/etc/nsswitch.conf:
       if: test -d /msys64/

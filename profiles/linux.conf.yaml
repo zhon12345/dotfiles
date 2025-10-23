@@ -7,12 +7,21 @@
 
 - link:
     ~/.profile: profile
-    ~/.zshenv: zsh/zshenv
     ~/.bashrc: bash/bashrc
     ~/.ssh/allowedSignersFile: ssh/allowedSignersFile
-    ~/.config/zsh/.zshrc: zsh/zshrc
-    ~/.config/fastfetch/config.jsonc: fastfetch/config.jsonc
     ~/.config/oh-my-posh/zhon12345.omp.json: oh-my-posh/zhon12345.omp.json
+
+    ~/.zshenv:
+      if: command -v zsh
+      path: zsh/zshenv
+
+    ~/.config/zsh/.zshrc:
+      if: command -v zsh
+      path: zsh/zshrc
+
+    ~/.config/fastfetch/config.jsonc:
+      if: command -v fastfetch
+      path: fastfetch/config.jsonc
 
     ~/.config/konsole/zhon12345.profile:
       if: command -v konsole
