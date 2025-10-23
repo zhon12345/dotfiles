@@ -15,8 +15,6 @@ declare -A git_config=(
 	["user.name"]="zhon12345"
 	["user.email"]="43035773+zhon12345@users.noreply.github.com"
 	["user.signingkey"]="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIApbUnuwCYVKebGrGJbexsjWOOc4XFRdQLqUZwUz9a8Q"
-	["url."https://github.com/".insteadOf"]="gh:"
-	["url."https://github.com/zhon12345/".insteadOf"]="zhon:"
 	["gpg.ssh.allowedSignersFile"]="$HOME/.ssh/allowedSignersFile"
 )
 
