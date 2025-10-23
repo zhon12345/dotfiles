@@ -38,5 +38,7 @@ if command -v code > /dev/null 2>&1; then
 fi
 
 if [[ "$(uname -a)" =~ "WSL" ]]; then
+	git config --global gpg.ssh.program "/mnt/c/Windows/System32/OpenSSH/ssh-keygen.exe"
+	git config --global core.sshCommand "/mnt/c/Windows/System32/OpenSSH/ssh.exe"
 	git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe"
 fi
