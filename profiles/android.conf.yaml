@@ -4,4 +4,6 @@
 
 - link:
     ~/.termux/colors.properties: termux/colors.properties
-    ~/.termux/termux.properties: termux/termux.properties
+
+- shell:
+    - cp -f ~/.termux/termux.properties termux/termux.properties
