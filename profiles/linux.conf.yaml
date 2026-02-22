@@ -7,6 +7,7 @@
 
 - link:
     ~/.profile: profile
+    ~/.bash_profile: bash/bash_profile
     ~/.bashrc: bash/bashrc
     ~/.ssh/allowedSignersFile: ssh/allowedSignersFile
     ~/.config/oh-my-posh/zhon12345.omp.json: oh-my-posh/zhon12345.omp.json
