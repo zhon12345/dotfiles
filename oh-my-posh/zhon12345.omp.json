@@ -89,6 +89,10 @@
 			"type": "prompt"
 		}
 	],
+	"transient_prompt": {
+		"newline": true,
+		"template": "<lightGreen>\u2570\u2500\u276f</><lightYellow>\u276f</><lightBlue>\u276f</> "
+	},
 	"final_space": true,
 	"version": 4
 }
