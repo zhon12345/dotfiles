@@ -20,7 +20,7 @@
       path: zsh/zshenv
 
     ~/.wslconfig:
-      if: comamnd -v wsl
+      if: command -v wsl
       path: wsl/wslconfig
 
     ~/.config/zsh/.zshrc:
