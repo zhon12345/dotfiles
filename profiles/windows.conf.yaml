@@ -3,37 +3,17 @@
       create: true
       relink: true
 
-- clean: ["~", "~/.config", "~/AppData/Local/clink", "~/Documents/WindowsPowerShell"]
+- clean: ["~/AppData/Local/clink", "~/Documents/WindowsPowerShell"]
 
 - link:
-    ~/.profile: profile
-    ~/.bash_profile: bash/bash_profile
-    ~/.bashrc: bash/bashrc
-    ~/.minttyrc: mintty/minttyrc
-    ~/.ssh/allowedSignersFile: ssh/allowedSignersFile
-    ~/.config/oh-my-posh/zhon12345.omp.json: oh-my-posh/zhon12345.omp.json
+    ~/.config/mintty/config: mintty/minttyrc
     ~/AppData/Local/clink/oh-my-posh.lua: clink/oh-my-posh.lua
     ~/Documents/WindowsPowerShell/profile.ps1: powershell/profile.ps1
-
-    ~/.zshenv:
-      if: command -v zsh
-      path: zsh/zshenv
 
     ~/.wslconfig:
       if: command -v wsl
       path: wsl/wslconfig
 
-    ~/.config/zsh/.zshrc:
-      if: command -v zsh
-      path: zsh/zshrc
-
-    ~/.config/fastfetch/config.jsonc:
-      if: command -v fastfetch
-      path: fastfetch/config.jsonc
-
     /msys64/etc/nsswitch.conf:
       if: test -d /msys64/
       path: msys64/nsswitch.conf
-
-- shell:
-    - [bash ./git/generate-config.sh, Generating git config]
