@@ -1,1 +1,20 @@
-ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+# Global Aliases & Commands
+[[ -f "${HOME}/.profile" ]] && \. ~/.profile
+
+# XDG Base Directories
+ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+
+ZSH_STATE_HOME="${XDG_STATE_HOME}/zsh"
+ZSH_CACHE_HOME="${XDG_CACHE_HOME}/zsh"
+
+# Zinit
+if [[ "$MACHINE" = "Windows" ]]; then
+	ZINIT_HOME="${HOME}/.zinit/bin"
+else
+	ZINIT_HOME="${XDG_DATA_HOME}/zinit/bin"
+fi
+
+# History
+HISTSIZE=5000
+SAVEHIST=$HISTSIZE
+HISTFILE="${ZSH_STATE_HOME}/history"

@@ -1,3 +1,6 @@
+# Initialize XDG Directory
+BASH_STATE_HOME="${XDG_STATE_HOME}/bash"
+[ -d "${BASH_STATE_HOME}" ] || mkdir -p "${BASH_STATE_HOME}"
 
 # Keybinds
 bind '"\C-h": backward-kill-word'
@@ -6,7 +9,7 @@ bind '"\e[3;5~":kill-word'
 # History
 HISTSIZE=5000
 HISTFILESIZE=$HISTSIZE
-HISTFILE=~/.bash_history
+HISTFILE="${BASH_STATE_HOME}/history"
 HISTCONTROL=ignoreboth:erasedups
 
 shopt -s histappend
