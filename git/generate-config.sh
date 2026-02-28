@@ -37,7 +37,7 @@ if [[ -d "${HOME}/.ssh" ]]; then
 		)
 	fi
 
-	if [[ "$(uname -a)" =~ "WSL" ]]; then
+	if [[ "$MACHINE" = "WSL" ]]; then
 		git_config+=(
 			["core.sshCommand"]="/mnt/c/Windows/System32/OpenSSH/ssh.exe"
 			["gpg.ssh.program"]="/mnt/c/Windows/System32/OpenSSH/ssh-keygen.exe"

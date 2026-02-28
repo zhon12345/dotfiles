@@ -1,7 +1,7 @@
+# zmodload zsh/zprof
+
 # Global Aliases & Commands
-if [[ -f "${HOME}/.profile" ]]; then
-	source ~/.profile
-fi
+[[ -f "${HOME}/.profile" ]] && \. ~/.profile
 
 # Plugin Manager
 if [[ "$MACHINE" = "Windows" ]]; then
@@ -18,13 +18,10 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Plugins
-zinit wait lucid light-mode for \
-	atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-		zdharma-continuum/fast-syntax-highlighting \
-	blockf \
-		zsh-users/zsh-completions \
-	atload"!_zsh_autosuggest_start" \
-		zsh-users/zsh-autosuggestions
+zinit light-mode for \
+	zdharma-continuum/fast-syntax-highlighting \
+	zsh-users/zsh-completions \
+	zsh-users/zsh-autosuggestions
 
 # Keybinds
 bindkey -e
@@ -50,19 +47,14 @@ setopt hist_find_no_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 
-# Functions
-cleanup_cache() {
-	local patterns=(
-		".zsh_history.*"
-		".zcompdump.*"
-	)
-
-	for pattern in "${patterns[@]}"; do
-		find "${HOME}" -maxdepth 1 -type f -name "${pattern}" -exec rm -f {} \;
-	done
-}
-
-cleanup_cache
-
 # Theming
-eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zhon12345.omp.json)"
+if command -v oh-my-posh > /dev/null 2>&1; then
+	eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zhon12345.omp.json)"
+fi
+
+# FNM
+if command -v fnm > /dev/null 2>&1; then
+	eval "$(fnm env --use-on-cd --shell zsh)"
+fi
+
+# zprof

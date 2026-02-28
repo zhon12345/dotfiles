@@ -1,5 +1,2 @@
-if command -v zsh &> /dev/null; then
-  exec zsh
-else
-	[[ -f ~/.bashrc ]] && . ~/.bashrc
-fi
+[[ -f "${HOME}/.profile" ]] && \. ~/.profile
+[[ -f "${HOME}/.bashrc" ]] && \. ~/.bashrc

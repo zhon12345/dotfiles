@@ -5,42 +5,45 @@ export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 [ ! -d "${XDG_CONFIG_HOME}" ] && mkdir -p "${XDG_CONFIG_HOME}"
 [ ! -d "${XDG_CACHE_HOME}" ] && mkdir -p "${XDG_CACHE_HOME}"
 
-# NVM
-export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # PATH Configuration
-if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
-fi
+declare -a paths=(
+	"${HOME}/.local/bin"
+	"${HOME}/.local/share/fnm"
+)
 
-if [ -d "$HOME/.local/bin" ]; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
+for dir in "${paths[@]}"; do
+	if [ -d "$dir" ] && [[ ":$PATH:" != *":$dir:"* ]]; then
+		PATH="${dir}:${PATH}"
+	fi
+done
+
+export PATH
 
 # Environment Variables
-export EDITOR='code'
-export VISUAL='code'
+if command -v code > /dev/null 2>&1; then
+	export EDITOR='code --wait'
+	export VISUAL='code --wait'
+fi
 
 # Aliases
 alias ll='ls -alF'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-# Functions
-detect_os() {
-	uname_string="$(uname -a)"
-
-	case "$uname_string" in
-			*Darwin*)			MACHINE="macOS";;
-			*Linux*)			MACHINE="Linux";;
-			*Msys*)				MACHINE="Windows";;
-			*Cygwin*)			MACHINE="Windows";;
-			*Android*)		MACHINE="Android";;
-			*)						MACHINE="Unknown:${uname_string}";;
-	esac
-
-	export MACHINE
-}
-
-detect_os
+# Detect OS
+case "$(uname -s)" in
+	Darwin*) MACHINE="macOS" ;;
+	Linux*)
+		if [ -d "/data/data/com.termux" ]; then
+			MACHINE="Android"
+		elif grep -qi "microsoft" /proc/version 2>/dev/null; then
+			MACHINE="WSL"
+		else
+			MACHINE="Linux"
+		fi
+		;;
+	CYGWIN*|MSYS*|MINGW*) MACHINE="Windows" ;;
+	*) MACHINE="Unknown" ;;
+esac
+export MACHINE

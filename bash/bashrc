@@ -1,7 +1,3 @@
-# Global Aliases & Commands
-if [[ -f "${HOME}/.profile" ]]; then
-	. ~/.profile
-fi
 
 # Keybinds
 bind '"\C-h": backward-kill-word'
@@ -19,4 +15,11 @@ HISTIGNORE='&:[ ]*'
 PROMPT_COMMAND="history -a; history -n"
 
 # Theming
-eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/zhon12345.omp.json)"
+if command -v oh-my-posh > /dev/null 2>&1; then
+	eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/zhon12345.omp.json)"
+fi
+
+# FNM
+if command -v fnm > /dev/null 2>&1; then
+	eval "$(fnm env --use-on-cd --shell bash)"
+fi
