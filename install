@@ -5,8 +5,10 @@ set -e
 BASE_CONFIG="default"
 CONFIG_SUFFIX=".conf.yaml"
 
+META_DIR="meta"
 CONFIG_DIR="profiles"
 BACKUP_DIR="backups"
+
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 main() {
@@ -19,17 +21,17 @@ remove_whitespace() {
 }
 
 backup_files() {
-	BACKUP_PATH="${BASE_DIR}/${BACKUP_DIR}"
+	BACKUP_PATH="${BASE_DIR}/${META_DIR}/${BACKUP_DIR}"
 
-	if [[ ! -d "${BACKUP_PATH}" ]]; then
-		echo "Creating backup directory at ${BACKUP_PATH}"
-		mkdir -p "${BACKUP_PATH}"
-	else
-		echo "Backup directory already exists, skipping creation..."
-	fi
+if [[ ! -d "${BACKUP_PATH}" ]]; then
+	echo "Creating backup directory at ${BACKUP_PATH}"
+	mkdir -p "${BACKUP_PATH}"
+else
+	echo "Backup directory already exists, skipping creation..."
+fi
 
 	for conf in "$@"; do
-		CONFIG_FILE="${CONFIG_DIR}/${conf}${CONFIG_SUFFIX}"
+		CONFIG_FILE="${META_DIR}/${CONFIG_DIR}/${conf}${CONFIG_SUFFIX}"
 		echo "Backing up files from ${CONFIG_FILE}..."
 
 		while IFS=: read -r DEST FILE; do
@@ -68,11 +70,11 @@ run_dotbot() {
 	DOTBOT_BIN="bin/dotbot"
 
 	cd "$BASE_DIR"
-	git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-	git submodule update --init --recursive "${DOTBOT_DIR}"
+	git -C "${BASE_DIR}" submodule sync --quiet --recursive
+	git submodule update --init --recursive "${BASE_DIR}"
 
 	for conf in "$@"; do
-		"${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "${CONFIG_DIR}/${conf}${CONFIG_SUFFIX}"
+		"${BASE_DIR}/${META_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "${META_DIR}/${CONFIG_DIR}/${conf}${CONFIG_SUFFIX}"
 	done
 }
 
