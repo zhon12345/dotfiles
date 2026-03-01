@@ -1,7 +1,3 @@
-- defaults:
-    link:
-      relink: true
-
 - link:
     ~/.config/konsole/zhon12345.profile:
       if: command -v konsole
