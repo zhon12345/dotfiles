@@ -14,6 +14,7 @@ declare -A git_config=(
 	["init.defaultBranch"]="main"
 	["user.name"]="zhon12345"
 	["user.email"]="43035773+zhon12345@users.noreply.github.com"
+	["push.autoSetupRemote"]=true
 )
 
 if command -v code > /dev/null 2>&1; then
