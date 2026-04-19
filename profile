@@ -26,10 +26,19 @@ if command -v code > /dev/null 2>&1; then
 	export VISUAL='code --wait'
 fi
 
+export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
+export DOTNET_CLI_HOME="${XDG_DATA_HOME}/dotnet"
+export LESSHISTFILE="${XDG_STATE_HOME}/less/history"
+export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}/npm"
+export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+export NODE_REPL_HISTORY="${XDG_DATA_HOME}/node_repl_history"
+export PYTHON_HISTORY="${XDG_DATA_HOME}/python/history"
+
 # Aliases
 alias ll='ls -alF'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 
 # Detect OS
 case "$(uname -s)" in
